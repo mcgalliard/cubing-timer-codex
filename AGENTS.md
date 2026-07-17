@@ -8,12 +8,14 @@ CubeDesk is a local-first Rubik's cube timer. Preserve fast keyboard behavior, a
 
 ## Architecture
 
-- `app/page.tsx` is the client application and owns the timer state machine, solve persistence, statistics, graph, and interface.
+- `app/page.tsx` is the force-static route wrapper used by GitHub Pages.
+- `app/CubeTimer.tsx` is the client application and owns the timer state machine, solve persistence, statistics, graph, and interface.
 - `app/lib/scrambles.ts` exports `CubeSize` and `generateScramble(size)` for 3×3 through 7×7.
 - `app/globals.css` contains the complete responsive visual system.
 - `app/layout.tsx` owns page metadata and fonts.
 - `tests/rendered-html.test.mjs` verifies the built server-rendered shell.
 - `.openai/hosting.json` intentionally leaves D1 and R2 disabled because solve data is local.
+- `.github/workflows/deploy-pages.yml` validates and deploys the static export to GitHub Pages.
 - `docs/assets/` contains README screenshots and the timer demo GIF.
 
 ## Timer invariants
@@ -66,6 +68,8 @@ npm test
 npm run lint
 npm run build
 ```
+
+The production Pages build sets `GITHUB_ACTIONS=true` automatically. Vite then uses `/cubing-timer-codex/` as its asset base while local development remains at `/`. Do not hard-code the repository prefix into application links.
 
 For timer-state changes, also manually verify short holds, exactly one start, exactly one stop, key repeat, blur cancellation, event switching, deletion, reload persistence, and both pointer and keyboard flows.
 

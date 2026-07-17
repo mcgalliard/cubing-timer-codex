@@ -4,6 +4,8 @@
 
 CubeDesk is a fast, private speedcubing timer that runs entirely in your browser. It generates scrambles for 3×3 through 7×7 cubes, records solves locally, calculates session statistics, and charts your progress without requiring an account or server.
 
+**[Open the live timer →](https://mcgalliard.github.io/cubing-timer-codex/)**
+
 ## Timer demo
 
 ![CubeDesk start, run, and save flow](docs/assets/cubedesk-demo.gif)
@@ -74,7 +76,11 @@ npm run lint   # ESLint
 npm run build  # deployment build
 ```
 
-The main application is in `app/page.tsx`, styling is in `app/globals.css`, and scramble generation is isolated in `app/lib/scrambles.ts`. See [AGENTS.md](AGENTS.md) for architecture notes and guidance for future Codex sessions.
+The client application is in `app/CubeTimer.tsx`, its static route wrapper is in `app/page.tsx`, styling is in `app/globals.css`, and scramble generation is isolated in `app/lib/scrambles.ts`. See [AGENTS.md](AGENTS.md) for architecture notes and guidance for future Codex sessions.
+
+## Deployment
+
+Every push to `main` runs the GitHub Pages workflow in `.github/workflows/deploy-pages.yml`. The workflow validates the project, creates a static export under the repository base path, and deploys it to GitHub Pages.
 
 ## Technology
 

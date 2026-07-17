@@ -8,7 +8,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   title: "CubeDesk — Local Speedcubing Timer",
   description: "A fast, private Rubik's cube timer with scrambles, stats, and solve history.",
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  icons: {
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/favicon.svg`,
+    shortcut: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/favicon.svg`,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
